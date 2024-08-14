@@ -34,4 +34,5 @@ s.id
 ,s.people
 FROM Stadium s
 JOIN filter_dataset f ON s.id = f.id
-WHERE consec_count >=3
+WHERE TRUE
+  AND consec_count >=3
