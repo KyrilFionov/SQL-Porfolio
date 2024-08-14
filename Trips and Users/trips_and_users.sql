@@ -28,5 +28,6 @@ day
     ,2
 ) as 'Cancellation Rate'
 FROM base_table
-WHERE day BETWEEN '2013-10-01' AND '2013-10-03'
+WHERE TRUE 
+    AND day BETWEEN '2013-10-01' AND '2013-10-03'
 GROUP BY 1
