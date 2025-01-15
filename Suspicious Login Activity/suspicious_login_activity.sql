@@ -75,7 +75,7 @@ event_id
 ,user_id 
 ,event_datetime 
 ,event_type
-FROM projects.main.events
+FROM events
 WHERE TRUE
 AND event_type = 'login failed'
 )
