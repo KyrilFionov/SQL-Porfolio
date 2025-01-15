@@ -67,15 +67,16 @@ values
     (59, 3, '2024-02-01 00:01:00', 'login failed'),
     (60, 3, '2024-02-01 00:02:00', 'login failed')
 ;
+
 WITH cte_grouped_events AS (
 SELECT
 event_id 
-,ROW_NUMBER() OVER (PARTITION BY user_id,event_type ORDER BY user_id,event_datetime) 			as row_num
+,ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY user_id,event_datetime) 			as row_num
 ,event_id - ROW_NUMBER() OVER (PARTITION BY user_id,event_type ORDER BY user_id,event_datetime) as island
 ,user_id 
 ,event_datetime 
 ,event_type
-FROM projects.main.events
+FROM events
 WHERE TRUE
 AND event_type = 'login failed'
 )
