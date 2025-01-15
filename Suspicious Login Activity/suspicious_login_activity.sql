@@ -70,7 +70,7 @@ values
 WITH cte_grouped_events AS (
 SELECT
 event_id 
-,ROW_NUMBER() OVER (PARTITION BY user_id,event_type ORDER BY user_id,event_datetime) 			      as row_num
+,ROW_NUMBER() OVER (PARTITION BY user_id,event_type ORDER BY user_id,event_datetime) 			as row_num
 ,event_id - ROW_NUMBER() OVER (PARTITION BY user_id,event_type ORDER BY user_id,event_datetime) as island
 ,user_id 
 ,event_datetime 
