@@ -71,12 +71,11 @@ values
 WITH cte_grouped_events AS (
 SELECT
 event_id 
-,ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY user_id,event_datetime) 			as row_num
 ,event_id - ROW_NUMBER() OVER (PARTITION BY user_id,event_type ORDER BY user_id,event_datetime) as island
 ,user_id 
 ,event_datetime 
 ,event_type
-FROM events
+FROM projects.main.events
 WHERE TRUE
 AND event_type = 'login failed'
 )
